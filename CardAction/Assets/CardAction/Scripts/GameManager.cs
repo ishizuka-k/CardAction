@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
         for(int i = 0 ; i < 18 ; i++)
         {
             string Aname = "Area" + (i+1);
-            Debug.Log(Aname);
             Area[i] = GameObject.Find(Aname);
             if (i < 9)
             {
