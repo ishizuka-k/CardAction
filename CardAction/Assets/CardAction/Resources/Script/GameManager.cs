@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-    static 
     GameObject[] Area = new GameObject[18];
-
 	// Use this for initialization
 	void Start () {
         for(int i = 0 ; i < 18 ; i++)
@@ -26,12 +24,15 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     if (Input.GetMouseButtonDown(0)) {
- 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+			Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
  
         if (Physics.Raycast(ray, out hit)){
             GameObject obj = hit.collider.gameObject;
+
+			if (obj.tag == "Area"){
+				}
             Debug.Log(obj.name);
         }
     }
