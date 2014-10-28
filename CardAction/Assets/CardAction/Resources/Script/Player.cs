@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
         //初期値設定
 		StartPoint = GameObject.Find("Area2").transform.position;
 		this.gameObject.transform.position = new Vector3(StartPoint.x,
-		                                                 StartPoint.y + GameObject.Find("Area2").renderer.bounds.size.y,
+		                                                 StartPoint.y + GameObject.Find("Area2").renderer.bounds.size.y*0.5f,
 		                                                 StartPoint.z);
 		StartPoint =TargetPoint = this.gameObject.transform.position;
 		AreaIdx = 2;

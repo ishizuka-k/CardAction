@@ -69,7 +69,7 @@ public class Game : MonoBehaviour {
 
 					pPlayer.AreaIdx = AreaIdx;
 					pPlayer.TargetPoint = new Vector3(obj.transform.position.x,
-					                                         obj.transform.position.y + obj.renderer.bounds.size.y,
+					                                         obj.transform.position.y + obj.renderer.bounds.size.y*0.5f,
 					                                         obj.transform.position.z);
 					                                         
 			}

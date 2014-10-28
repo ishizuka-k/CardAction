@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 		
 		get {
 			if( mInstance == null ) {
-				GameObject go = new GameObject("GameManager");
+				GameObject go = GameObject.Find("GameManager");
 				mInstance = go.AddComponent<GameManager>();
 			}
 			

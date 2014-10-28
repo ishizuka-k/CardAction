@@ -19,7 +19,6 @@ public class guicontroll : MonoBehaviour {
 	
 	void OnGUI(){
 		GM = GameManager.Instance;
-		//;
 
         if (Input.GetMouseButtonUp(0))
         {
