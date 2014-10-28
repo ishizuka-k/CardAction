@@ -9,7 +9,7 @@ public class Camera : MonoBehaviour {
 	void Start () {
         Player = GameObject.Find("Player");
         LookAt = GameObject.Find("Area8");
-        this.gameObject.transform.Translate(new Vector3(Player.transform.position.x, Player.transform.position.y + 10, Player.transform.position.z+3));
+        this.gameObject.transform.position = (new Vector3(Player.transform.position.x, Player.transform.position.y + 10, Player.transform.position.z-3));
         this.gameObject.transform.LookAt(LookAt.transform.position);
 	}
 	

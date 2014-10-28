@@ -1,49 +1,70 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public class CardData {
+	public enum TYPE{
+		SORD,
+		BULLET,
+		ITEM,
+	};
+	public string 	name;
+	public int 		type;
+	public int		id;
+	public Texture	tex;
+	public CardData(string _name,int _type,int _id,Texture _tex)
+	{
+		name 	= _name;
+		type 	= _type;
+		id  	= _id;
+		tex 	= _tex;
+	}
+};
+
 public class GameManager : MonoBehaviour {
-    GameObject[] Area = new GameObject[18];
-    Player pPlayer;
-    //GameObject pPlayer;
+	private static GameManager mInstance;
+	//private static CardData[] CardManager = {{"test",0,1,Load<Texture>("image/mask")}};
+	private static CardData[] CardManager = new CardData[]{
+		new CardData("test",0,1,Resources.Load<Texture>("image/mask")),
+	};
+	
+	private GameManager () { // Private Constructor
+		
+		Debug.Log("Create SampleSingleton GameObject instance.");
+	}
+	
+	public static GameManager Instance {
+		
+		get {
+			if( mInstance == null ) {
+				GameObject go = new GameObject("GameManager");
+				mInstance = go.AddComponent<GameManager>();
+			}
+			
+			return mInstance;
+		}
+	}
+
+	public CardData GetCard( string name )
+	{
+		int i = 0;
+		while (CardManager[i] != null)
+		{
+			if ( CardManager[i].name == name )
+			{
+				return CardManager[0];
+			}
+			i++;
+		}
+		return null;
+	}
+
 	// Use this for initialization
 	void Start () {
-        //pPlayer = GameObject.Find("Player");
-        pPlayer = GetComponent<Player>();
-        for(int i = 0 ; i < 18 ; i++)
-        {
-            string Aname = "Area" + (i+1);
-            Area[i] = GameObject.Find(Aname);
-            if (i < 9)
-            {
-                Area[i].renderer.material.color = Color.blue;
-                Area[i].tag = "OwnArea";
-            }
-            else
-            {
-                Area[i].renderer.material.color = Color.red;
-                Area[i].tag = "EnemyArea";
-            }
-        }
-        Debug.Log(pPlayer);
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-    if (Input.GetMouseButtonDown(0)) {
-
-		Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit = new RaycastHit();
- 
-        if (Physics.Raycast(ray, out hit)){
-            GameObject obj = hit.collider.gameObject;
-
-            if (obj.tag == "OwnArea")
-            {
-                pPlayer.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + obj.renderer.bounds.size.y, obj.transform.position.z);
-                //GetComponent<Player>().animator.SetInteger("State", 1);
-			}
-            Debug.Log(obj.name);
-        }
-    }
+	
 	}
 }
