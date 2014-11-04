@@ -20,11 +20,15 @@ public class CardData {
 	}
 };
 
-public class GameManager : MonoBehaviour {
+public class GameManager {
 	private static GameManager mInstance;
 	//private static CardData[] CardManager = {{"test",0,1,Load<Texture>("image/mask")}};
 	private static CardData[] CardManager = new CardData[]{
-		new CardData("test",0,1,Resources.Load<Texture>("image/mask")),
+		new CardData("test",0,0,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("test",0,1,(Texture)Resources.Load<Texture>("image/Lpower")),
+		new CardData("test",0,2,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("test",0,3,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("test",0,4,(Texture)Resources.Load<Texture>("image/mask")),
 	};
 	
 	private GameManager () { // Private Constructor
@@ -36,22 +40,23 @@ public class GameManager : MonoBehaviour {
 		
 		get {
 			if( mInstance == null ) {
-				GameObject go = GameObject.Find("GameManager");
-				mInstance = go.AddComponent<GameManager>();
+				//GameObject go = GameObject.Find("GameManager");
+				//mInstance = go.AddComponent<GameManager>();
+				mInstance = new GameManager();
 			}
 			
 			return mInstance;
 		}
 	}
 
-	public CardData GetCard( string name )
+	public CardData GetCard( int id )
 	{
 		int i = 0;
 		while (CardManager[i] != null)
 		{
-			if ( CardManager[i].name == name )
+			if ( CardManager[i].id == id )
 			{
-				return CardManager[0];
+				return CardManager[id];
 			}
 			i++;
 		}

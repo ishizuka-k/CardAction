@@ -23,14 +23,14 @@ public class Camera : MonoBehaviour {
     void OnGUI()
     {
         GUI.Label(new Rect(0, 0, Screen.width * 0.2f, Screen.height * 0.025f), "カメラの高さ");
-        if (GUI.Button(new Rect(0, Screen.height * 0.025f, Screen.width * 0.1f, Screen.height * 0.025f), "↑"))
+        if (GUI.Button(new Rect(0, Screen.height * 0.025f, Screen.width * 0.1f, Screen.height * 0.05f), "↑"))
         {
             this.gameObject.transform.Translate(new Vector3(0, 1, 0));
             height += 1;
             StartPoint.y += 1;
         }
-        GUI.Label(new Rect(0, Screen.height * 0.05f, Screen.width * 0.1f, Screen.height * 0.025f), "" + height);
-        if (GUI.Button(new Rect(0, Screen.height * 0.075f, Screen.width * 0.1f, Screen.height * 0.025f), "↓"))
+        GUI.Label(new Rect(0, Screen.height * 0.075f, Screen.width * 0.1f, Screen.height * 0.025f), "" + height);
+        if (GUI.Button(new Rect(0, Screen.height * 0.1f, Screen.width * 0.1f, Screen.height * 0.05f), "↓"))
         {
             this.gameObject.transform.Translate(new Vector3(0, -1, 0));
             height -= 1;
@@ -38,7 +38,7 @@ public class Camera : MonoBehaviour {
         }
 
         GUI.Label(new Rect(Screen.width * 0.2f, 0, Screen.width * 0.2f, Screen.height * 0.025f), "視点との距離");
-        if (GUI.Button(new Rect(Screen.width * 0.2f, Screen.height * 0.025f, Screen.width * 0.1f, Screen.height * 0.025f), "↑"))
+        if (GUI.Button(new Rect(Screen.width * 0.2f, Screen.height * 0.025f, Screen.width * 0.1f, Screen.height * 0.05f), "↑"))
         {
             float Angle = Mathf.Atan2(LookAt.transform.position.y - StartPoint.y,
                 LookAt.transform.position.z - StartPoint.z);
@@ -46,8 +46,8 @@ public class Camera : MonoBehaviour {
             this.gameObject.transform.Translate(new Vector3(0, Mathf.Sin(-Angle), Mathf.Cos(-Angle)));
             EtoAlength += 1;
         }
-        GUI.Label(new Rect(Screen.width * 0.2f, Screen.height * 0.05f, Screen.width * 0.1f, Screen.height * 0.025f), "" + EtoAlength);
-        if (GUI.Button(new Rect(Screen.width * 0.2f, Screen.height * 0.075f, Screen.width * 0.1f, Screen.height * 0.025f), "↓"))
+        GUI.Label(new Rect(Screen.width * 0.2f, Screen.height * 0.075f, Screen.width * 0.1f, Screen.height * 0.025f), "" + EtoAlength);
+        if (GUI.Button(new Rect(Screen.width * 0.2f, Screen.height * 0.1f, Screen.width * 0.1f, Screen.height * 0.05f), "↓"))
         {
             float Angle = Mathf.Atan2(LookAt.transform.position.y - StartPoint.y,
                 LookAt.transform.position.z - StartPoint.z);
@@ -55,6 +55,7 @@ public class Camera : MonoBehaviour {
             this.gameObject.transform.Translate(new Vector3(0, -Mathf.Sin(-Angle), -Mathf.Cos(-Angle)));
             EtoAlength -= 1;
         }
+
     }
 	// Update is called once per frame
 	void Update () {
