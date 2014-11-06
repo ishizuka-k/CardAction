@@ -51,6 +51,8 @@
      <Compile Include="Assets\CardAction\Resources\Script\GameManager.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\Player.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\TextureManager.cs" />
+     <Compile Include="Assets\CardAction\Resources\Script\attackController.cs" />
+     <Compile Include="Assets\CardAction\Resources\Script\enemy.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\guicontroll.cs" />
      <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
      <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />
@@ -63,7 +65,9 @@
      <None Include="Assets\UnityChan\license.txt" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
+     <None Include="Assets\FreeEffect\Document\FreeEffect.txt" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
+     <None Include="Assets\KY_magicEffectsFree\ReadMe.txt" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\UnityChan\Stage\Shader\AlphaMask.shader" />

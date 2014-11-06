@@ -4,13 +4,17 @@ using System.Collections;
 public class guicontroll : MonoBehaviour {
     public Texture pTextture;
 	GameManager GM;
-    int touchNumber = -1;
+	attckContoller AC;
+    int touchNumber;
 	Vector3 TouchPoint;
+	public bool swap;
 	
 
 	// Use this for initialization
 	void Start () {
+		touchNumber = -1;
 		TouchPoint = new Vector3 (0,0,0);
+		swap = false;
 	}
 	
 	// Update is called once per frame
@@ -24,7 +28,12 @@ public class guicontroll : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
+			if ( swap == false && touchNumber != -1) {
+				AC = attckContoller.Instance;
+				AC.AttckJudge(touchNumber);
+			}
             touchNumber = -1;
+			swap = false;
         }
         for (int i = 0; i < 5; i++ )
         {
@@ -55,6 +64,7 @@ public class guicontroll : MonoBehaviour {
 					                    (Screen.height-Input.mousePosition.y) - (Screen.height / 10.0f) * 0.5f,
 					                    Screen.width / 5.0f,
 					                    Screen.height / 10.0f);
+					swap = true;
 				}
             }
 			GUI.DrawTexture(testRect, (Texture)GM.GetCard(i).tex);

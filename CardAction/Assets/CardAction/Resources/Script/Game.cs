@@ -24,7 +24,6 @@ public class Game : MonoBehaviour {
                 Area[i].tag = "EnemyArea";
             }
         }
-        Debug.Log(pPlayer);
 	}
 	
 	// Update is called once per frame
@@ -73,7 +72,6 @@ public class Game : MonoBehaviour {
 					                                         obj.transform.position.z);
 					                                         
 			}
-            Debug.Log(obj.name);
         }
     }
 	}

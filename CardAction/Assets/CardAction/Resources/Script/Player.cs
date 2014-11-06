@@ -4,9 +4,10 @@ using System.Collections;
 [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour {
     public Animator animator;
-	public int AreaIdx;
-	public Vector3 TargetPoint;
-	public Vector3 StartPoint;
+	public int 		AreaIdx;
+	public float 	rigor;
+	public Vector3 	TargetPoint;
+	public Vector3 	StartPoint;
 	// Use this for initialization
 	void Start () {
         //アニメーター初期化
@@ -17,8 +18,9 @@ public class Player : MonoBehaviour {
 		this.gameObject.transform.position = new Vector3(StartPoint.x,
 		                                                 StartPoint.y + GameObject.Find("Area2").renderer.bounds.size.y*0.5f,
 		                                                 StartPoint.z);
-		StartPoint =TargetPoint = this.gameObject.transform.position;
-		AreaIdx = 2;
+		StartPoint 	= TargetPoint = this.gameObject.transform.position;
+		AreaIdx 	= 2;
+		rigor 		= 0;
 	}
 	
 	// Update is called once per frame
@@ -31,10 +33,14 @@ public class Player : MonoBehaviour {
 						//float Angle = Mathf.Atan2 (TargetPoint.x - StartPoint.x, TargetPoint.z - StartPoint.z);	
 						//this.transform.rotation = Quaternion.Euler (0.0f, Angle * Mathf.Rad2Deg, 0.0f);
 						StartPoint = this.transform.position;
-						Debug.Log("this X: "+this.transform.position.x + "Z : "+this.transform.position.z);
-						Debug.Log("target X: "+TargetPoint.x + "Z : "+TargetPoint.z);
-				} else if( animator.GetInteger("State") != 0 ){
-						animator.SetInteger ("State", 0);
-				}
+						//Debug.Log("this X: "+this.transform.position.x + "Z : "+this.transform.position.z);
+						//Debug.Log("target X: "+TargetPoint.x + "Z : "+TargetPoint.z);
+		} else if ( rigor > 0 ) {
+			rigor -= Time.deltaTime;
+			animator.SetFloat ("rigor", rigor);
+		} else if( animator.GetInteger("State") != 0){
+			Debug.Log("animechage");
+			animator.SetInteger ("State", 0);
+		}
 	}
 }

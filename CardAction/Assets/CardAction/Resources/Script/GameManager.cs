@@ -8,27 +8,30 @@ public class CardData {
 		ITEM,
 	};
 	public string 	name;
-	public int 		type;
+	public TYPE 	type;
 	public int		id;
+	public float 	rigor;
 	public Texture	tex;
-	public CardData(string _name,int _type,int _id,Texture _tex)
+
+	public CardData(string _name,TYPE _type,int _id,float _rigor,Texture _tex)
 	{
 		name 	= _name;
 		type 	= _type;
 		id  	= _id;
+		rigor = _rigor;
 		tex 	= _tex;
 	}
 };
 
 public class GameManager {
 	private static GameManager mInstance;
-	//private static CardData[] CardManager = {{"test",0,1,Load<Texture>("image/mask")}};
+
 	private static CardData[] CardManager = new CardData[]{
-		new CardData("test",0,0,(Texture)Resources.Load<Texture>("image/mask")),
-		new CardData("test",0,1,(Texture)Resources.Load<Texture>("image/Lpower")),
-		new CardData("test",0,2,(Texture)Resources.Load<Texture>("image/mask")),
-		new CardData("test",0,3,(Texture)Resources.Load<Texture>("image/mask")),
-		new CardData("test",0,4,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("sord",CardData.TYPE.SORD,0,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("bom" ,CardData.TYPE.BULLET,0,1.0f,(Texture)Resources.Load<Texture>("image/Lpower")),
+		new CardData("life",CardData.TYPE.ITEM,0,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("long",CardData.TYPE.SORD,1,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("wide",CardData.TYPE.SORD,2,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
 	};
 	
 	private GameManager () { // Private Constructor
@@ -40,8 +43,6 @@ public class GameManager {
 		
 		get {
 			if( mInstance == null ) {
-				//GameObject go = GameObject.Find("GameManager");
-				//mInstance = go.AddComponent<GameManager>();
 				mInstance = new GameManager();
 			}
 			
@@ -51,14 +52,8 @@ public class GameManager {
 
 	public CardData GetCard( int id )
 	{
-		int i = 0;
-		while (CardManager[i] != null)
-		{
-			if ( CardManager[i].id == id )
-			{
-				return CardManager[id];
-			}
-			i++;
+		if (CardManager[id] != null) {
+			return CardManager[id];
 		}
 		return null;
 	}
