@@ -27,11 +27,11 @@ public class GameManager {
 	private static GameManager mInstance;
 
 	private static CardData[] CardManager = new CardData[]{
-		new CardData("sord",CardData.TYPE.SORD,0,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
-		new CardData("bom" ,CardData.TYPE.BULLET,0,1.0f,(Texture)Resources.Load<Texture>("image/Lpower")),
-		new CardData("life",CardData.TYPE.ITEM,0,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
-		new CardData("long",CardData.TYPE.SORD,1,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
-		new CardData("wide",CardData.TYPE.SORD,2,1.0f,(Texture)Resources.Load<Texture>("image/mask")),
+		new CardData("sord",CardData.TYPE.SORD,0,1.0f,(Texture)Resources.Load<Texture>("image/sord")),
+		new CardData("bom" ,CardData.TYPE.BULLET,0,1.0f,(Texture)Resources.Load<Texture>("image/bom")),
+		new CardData("life",CardData.TYPE.ITEM,0,1.0f,(Texture)Resources.Load<Texture>("image/life")),
+		new CardData("long",CardData.TYPE.SORD,1,1.0f,(Texture)Resources.Load<Texture>("image/long")),
+		new CardData("wide",CardData.TYPE.SORD,2,1.0f,(Texture)Resources.Load<Texture>("image/wide")),
 	};
 	
 	private GameManager () { // Private Constructor

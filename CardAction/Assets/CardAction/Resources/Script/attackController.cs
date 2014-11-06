@@ -30,6 +30,9 @@ public class attckContoller {
 
 	public void AttckJudge(int id){
 		if (pPlayer.rigor <= 0) {
+            //エフェクト
+            GameObject effect = (GameObject)Resources.Load<GameObject>("prefab/Type02");
+            Object.Instantiate(effect, pPlayer.transform.position, Quaternion.identity);
 						GameManager GM = GameManager.Instance;
 						CardData CD = GM.GetCard (id);
 						switch (CD.type) {
@@ -65,6 +68,12 @@ public class attckContoller {
 		pPlayer.animator.SetInteger("State", 4);
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Enemy");
 		int Range = pPlayer.AreaIdx + 3;
+
+        GameObject Area = GameObject.Find("Area" + Range);
+        //エフェクト
+        GameObject effect = (GameObject)Resources.Load<GameObject>("prefab/skillAttack");
+        Vector3 pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
+        Object.Instantiate(effect, pos, Quaternion.identity);
 
 		foreach(GameObject obj in objs) {
 			enemy pEnemy = obj.GetComponent<enemy>();
