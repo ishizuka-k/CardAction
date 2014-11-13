@@ -47,11 +47,23 @@ public class Game : MonoBehaviour {
 					}
 					else if ( AreaIdx == pPlayer.AreaIdx-1 )
 					{
-						pPlayer.animator.SetInteger("State", 2);
+						if ( (AreaIdx-1)%3 != 2 )
+						{
+							pPlayer.animator.SetInteger("State", 2);
+						}
+						else {
+							return;
+						}
 					}
 					else if ( AreaIdx == pPlayer.AreaIdx+1 )
 					{
-						pPlayer.animator.SetInteger("State", 3);
+						if ( (AreaIdx-1)%3 != 0 )
+						{
+							pPlayer.animator.SetInteger("State", 3);
+						}
+						else {
+							return;
+						}
 					}
 					else if ( AreaIdx == pPlayer.AreaIdx+3 )
 					{
@@ -67,6 +79,50 @@ public class Game : MonoBehaviour {
 					}
 
 					pPlayer.AreaIdx = AreaIdx;
+					AreaIdx -=1;
+					Debug.Log("AreaIdx"+AreaIdx);
+					for(int i = 0 ; i < 18 ; i++)
+					{
+						if (Area[i].tag == "OwnArea")
+						{
+							Area[i].renderer.material.color = Color.blue;
+						}
+					}
+					if ( AreaIdx+1 < 18 )
+					{
+						if (Area[AreaIdx+1].tag == "OwnArea")
+						{
+							if ( (AreaIdx+1)%3 != 0 )
+							{
+								Area[AreaIdx+1].renderer.material.color = Color.yellow;
+							}
+						}
+					}
+					if ( AreaIdx+3 < 18 )
+					{
+						if (Area[AreaIdx+3].tag == "OwnArea")
+						{
+							Area[AreaIdx+3].renderer.material.color = Color.yellow;
+						}
+					}
+					if ( AreaIdx-1 >= 0 )
+					{
+						if (Area[AreaIdx-1].tag == "OwnArea")
+						{
+							if ( (AreaIdx-1)%3 != 2 )
+							{
+								Area[AreaIdx-1].renderer.material.color = Color.yellow;
+							}
+						}
+					}
+					if ( AreaIdx-3 >= 0 )
+					{
+						if (Area[AreaIdx-3].tag == "OwnArea")
+						{
+							Area[AreaIdx-3].renderer.material.color = Color.yellow;
+						}
+					}
+
 					pPlayer.TargetPoint = new Vector3(obj.transform.position.x,
 					                                         obj.transform.position.y + obj.renderer.bounds.size.y*0.5f,
 					                                         obj.transform.position.z);

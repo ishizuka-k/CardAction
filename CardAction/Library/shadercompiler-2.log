@@ -285,3 +285,6 @@ Cmd: compileSnippet
   api=1 type=0 insize=339 outsize=387 kw= ok=1
 Cmd: compileSnippet
   api=8 type=1 insize=339 outsize=2227 kw= ok=1
+End of pipe
+
+Quitting shader compiler process
