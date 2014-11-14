@@ -24,6 +24,9 @@ public class Game : MonoBehaviour {
                 Area[i].tag = "EnemyArea";
             }
         }
+		Area[0].renderer.material.color = Color.yellow;
+		Area[2].renderer.material.color = Color.yellow;
+		Area[4].renderer.material.color = Color.yellow;
 	}
 	
 	// Update is called once per frame
