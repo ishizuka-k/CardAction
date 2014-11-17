@@ -52,6 +52,7 @@
      <Compile Include="Assets\CardAction\Resources\Script\Player.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\TextureManager.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\attackController.cs" />
+     <Compile Include="Assets\CardAction\Resources\Script\effectManager.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\enemy.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\guicontroll.cs" />
      <Compile Include="Assets\CardAction\Resources\Script\particl.cs" />

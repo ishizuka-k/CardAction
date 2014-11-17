@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CardAction/Resources/Script/Game.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CardAction/Resources/Script/attackController.cs">
     <Files>
       <File FileName="Assets/CardAction/Resources/Script/Game.cs" Line="26" Column="10" />
       <File FileName="Assets/CardAction/Resources/Script/GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets/CardAction/Resources/Script/guicontroll.cs" Line="1" Column="1" />
       <File FileName="Assets/CardAction/Resources/Script/Camera.cs" Line="1" Column="1" />
       <File FileName="Assets/CardAction/Resources/Script/Player.cs" Line="1" Column="1" />
-      <File FileName="Assets/CardAction/Resources/Script/attackController.cs" Line="1" Column="1" />
+      <File FileName="Assets/CardAction/Resources/Script/attackController.cs" Line="132" Column="53" />
       <File FileName="Assets/CardAction/Resources/Script/enemy.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
