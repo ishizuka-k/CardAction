@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
 	public float 	rigor;
 	public Vector3 	TargetPoint;
 	public Vector3 	StartPoint;
+	public CardData	nowCard;
 	// Use this for initialization
 	void Start () {
         //アニメーター初期化
@@ -21,10 +22,12 @@ public class Player : MonoBehaviour {
 		StartPoint 	= TargetPoint = this.gameObject.transform.position;
 		AreaIdx 	= 2;
 		rigor 		= 0;
+		nowCard		= null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		GameManager.Instance.getEffectInstance().Update();
 		if ((this.transform.position.x >= TargetPoint.x + 0.1f || this.transform.position.x <= TargetPoint.x - 0.1f) || 
 						(this.transform.position.z >= TargetPoint.z + 0.1f || this.transform.position.z <= TargetPoint.z - 0.1f)) {
 						this.transform.position = new Vector3 (this.transform.position.x + ((TargetPoint.x - StartPoint.x) * 0.1f),
@@ -39,6 +42,11 @@ public class Player : MonoBehaviour {
 			rigor -= Time.deltaTime;
 			animator.SetFloat ("rigor", rigor);
 		} else if( animator.GetInteger("State") != 0){
+			/*
+			if ( nowCard.type != CardData.TYPE.BULLET ) {
+				effectManager EM = GameManager.Instance.getEffectInstance();
+				EM.startEffect(nowCard.effect,);
+			}*/
 			Debug.Log("animechage");
 			animator.SetInteger ("State", 0);
 		}

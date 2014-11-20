@@ -12,26 +12,29 @@ public class CardData {
 	public int		id;
 	public float 	rigor;
 	public Texture	tex;
+	public int		effect;
 
-	public CardData(string _name,TYPE _type,int _id,float _rigor,Texture _tex)
+	public CardData(string _name,TYPE _type,int _id,float _rigor,Texture _tex,int _effect)
 	{
 		name 	= _name;
 		type 	= _type;
 		id  	= _id;
-		rigor = _rigor;
+		rigor 	= _rigor;
 		tex 	= _tex;
+		effect 	= _effect;
 	}
 };
 
 public class GameManager {
 	private static GameManager mInstance;
+	private static effectManager effectInstance = new effectManager();
 
 	private static CardData[] CardManager = new CardData[]{
-		new CardData("sord",CardData.TYPE.SORD,0,1.0f,(Texture)Resources.Load<Texture>("image/sord")),
-		new CardData("bom" ,CardData.TYPE.BULLET,0,1.0f,(Texture)Resources.Load<Texture>("image/bom")),
-		new CardData("life",CardData.TYPE.ITEM,0,1.0f,(Texture)Resources.Load<Texture>("image/life")),
-		new CardData("long",CardData.TYPE.SORD,1,1.0f,(Texture)Resources.Load<Texture>("image/long")),
-		new CardData("wide",CardData.TYPE.SORD,2,1.0f,(Texture)Resources.Load<Texture>("image/wide")),
+		new CardData("sord",CardData.TYPE.SORD,0,1.0f,(Texture)Resources.Load<Texture>("image/sord"),effectInstance.setEffect("prefab/skillAttack")),
+		new CardData("bom" ,CardData.TYPE.BULLET,0,1.0f,(Texture)Resources.Load<Texture>("image/bom"),effectInstance.setEffect("prefab/skillAttack")),
+		new CardData("beam",CardData.TYPE.BULLET,0,1.0f,(Texture)Resources.Load<Texture>("image/life"),effectInstance.setEffect("prefab/skillAttack")),
+		new CardData("long",CardData.TYPE.SORD,1,1.0f,(Texture)Resources.Load<Texture>("image/long"),effectInstance.setEffect("prefab/skillAttack")),
+		new CardData("wide",CardData.TYPE.SORD,2,1.0f,(Texture)Resources.Load<Texture>("image/wide"),effectInstance.setEffect("prefab/skillAttack")),
 	};
 	
 	private GameManager () { // Private Constructor
@@ -50,6 +53,9 @@ public class GameManager {
 		}
 	}
 
+	public effectManager getEffectInstance() {
+		return effectInstance;
+	}
 	public CardData GetCard( int id )
 	{
 		if (CardManager[id] != null) {
@@ -65,6 +71,6 @@ public class GameManager {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }

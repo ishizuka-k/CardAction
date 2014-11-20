@@ -40,15 +40,15 @@ public class attckContoller {
 								switch (CD.id) {
 								case 0:
 									pPlayer.rigor = CD.rigor;
-									sordRange ();
+									sordRange (CD);
 									break;
 								case 1:
 									pPlayer.rigor = CD.rigor;
-									longSordRange();
+					longSordRange(CD);
 									break;
 								case 2:
 									pPlayer.rigor = CD.rigor;
-									wideSordRange();
+					wideSordRange(CD);
 									break;
 								}
 								break;
@@ -68,16 +68,16 @@ public class attckContoller {
 				}
 		}
 	
-	public bool sordRange () {
+	public bool sordRange (CardData CD) {
 		pPlayer.animator.SetInteger("State", 4);
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Enemy");
 		int Range = pPlayer.AreaIdx + 3;
 
         GameObject Area = GameObject.Find("Area" + Range);
         //エフェクト
-        GameObject effect = (GameObject)Resources.Load<GameObject>("prefab/skillAttack");
         Vector3 pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
-        Object.Instantiate(effect, pos, Quaternion.identity);
+		effectManager EM = GameManager.Instance.getEffectInstance();
+		EM.provisionEffect(pos,CD.effect,CD.rigor);
 
 		foreach(GameObject obj in objs) {
 			if( EnemyHit(Range,obj) ) {
@@ -87,57 +87,53 @@ public class attckContoller {
 		return false;
 	}
 
-	public bool wideSordRange () {
+	public bool wideSordRange (CardData CD) {
 		pPlayer.animator.SetInteger("State", 4);
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Enemy");
 		int[] Range = {pPlayer.AreaIdx + 3,pPlayer.AreaIdx + 4,pPlayer.AreaIdx + 2};
 
-		//エフェクト
-		GameObject effect = (GameObject)Resources.Load<GameObject>("prefab/skillAttack");
-
 		if (Range [0] <= 18) {
 			foreach (GameObject obj in objs) {
 					EnemyHit (Range [0], obj);
+					effectManager EM = GameManager.Instance.getEffectInstance();
 					GameObject Area = GameObject.Find ("Area" + Range [0]);
 					Vector3 pos = new Vector3 (Area.transform.position.x, Area.transform.position.y + 1.0f, Area.transform.position.z);
-					Object.Instantiate (effect, pos, Quaternion.identity);
+					EM.provisionEffect(pos,CD.effect,CD.rigor);
 					if ((pPlayer.AreaIdx - 1) % 3 != 2) {
 							EnemyHit (Range [1], obj);
 							Area = GameObject.Find ("Area" + Range [1]);
-							pos = new Vector3 (Area.transform.position.x, Area.transform.position.y + 1.0f, Area.transform.position.z);
-							Object.Instantiate (effect, pos, Quaternion.identity);
+						 	pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
+							EM.provisionEffect(pos,CD.effect,CD.rigor);
 					}
 					if ((pPlayer.AreaIdx - 1) % 3 != 0) {
 							EnemyHit (Range [2], obj);
 							Area = GameObject.Find ("Area" + Range [2]);
 							pos = new Vector3 (Area.transform.position.x, Area.transform.position.y + 1.0f, Area.transform.position.z);
-							Object.Instantiate (effect, pos, Quaternion.identity);
+							EM.provisionEffect(pos,CD.effect,CD.rigor);
 					}
 			}
 		}
 		return false;
 	}
 
-	public bool longSordRange () {
+	public bool longSordRange (CardData CD) {
 		pPlayer.animator.SetInteger("State", 4);
 		GameObject[] objs = GameObject.FindGameObjectsWithTag ("Enemy");
 		int[] Range = {pPlayer.AreaIdx + 3,pPlayer.AreaIdx + 6};
-		
-		//エフェクト
-		GameObject effect = (GameObject)Resources.Load<GameObject>("prefab/skillAttack");
 
 		if( Range[0] <= 18 ) {
 			foreach(GameObject obj in objs) {
 				EnemyHit(Range[0],obj);
+				effectManager EM = GameManager.Instance.getEffectInstance();
 				GameObject Area = GameObject.Find("Area" + Range[0]);
 				Vector3 pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
-				Object.Instantiate(effect, pos, Quaternion.identity);
+				EM.provisionEffect(pos,CD.effect,CD.rigor);
 
 				if( Range[1] <= 18 ) {
 				EnemyHit(Range[1],obj);
 				Area = GameObject.Find("Area" + Range[1]);
 				pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
-				Object.Instantiate(effect, pos, Quaternion.identity);
+				EM.provisionEffect(pos,CD.effect,CD.rigor);
 				}
 			}
 		}

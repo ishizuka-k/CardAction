@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CardAction\Resources\Script\AnimationSpriteSheet.js" />
+     <Compile Include="Assets\CardAction\Resources\Script\DeadTime.js" />
      <Compile Include="Assets\KY_magicEffectsFree\Script\ConGUI.js" />
      <Compile Include="Assets\KY_magicEffectsFree\Script\Lighting.js" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye.shader" />
