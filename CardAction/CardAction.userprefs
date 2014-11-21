@@ -1,15 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CardAction/Resources/Script/Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CardAction/Resources/Script/attackController.cs">
     <Files>
       <File FileName="Assets/CardAction/Resources/Script/Game.cs" Line="1" Column="1" />
       <File FileName="Assets/CardAction/Resources/Script/GameManager.cs" Line="1" Column="1" />
       <File FileName="Assets/CardAction/Resources/Script/guicontroll.cs" Line="1" Column="1" />
       <File FileName="Assets/CardAction/Resources/Script/Camera.cs" Line="1" Column="1" />
-      <File FileName="Assets/CardAction/Resources/Script/Player.cs" Line="29" Column="18" />
-      <File FileName="Assets/CardAction/Resources/Script/attackController.cs" Line="1" Column="1" />
+      <File FileName="Assets/CardAction/Resources/Script/Player.cs" Line="1" Column="1" />
+      <File FileName="Assets/CardAction/Resources/Script/attackController.cs" Line="95" Column="3" />
       <File FileName="Assets/CardAction/Resources/Script/enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets/CardAction/Resources/Script/effectManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/CardAction/Resources/Script/object/Bullet.cs" Line="1" Column="1" />
+      <File FileName="Assets/CardAction/Resources/Script/effect/particl.cs" Line="1" Column="1" />
+      <File FileName="Assets/CardAction/Resources/Script/effect/effectManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

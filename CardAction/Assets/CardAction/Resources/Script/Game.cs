@@ -31,7 +31,7 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if ( pPlayer.rigor <= 0 ) {
+		if ( pPlayer.animator.GetInteger("State") == 0 ) {
 		    if (Input.GetMouseButtonDown(0)) {
 
 				Ray ray = UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -126,7 +126,7 @@ public class Game : MonoBehaviour {
 									Area[AreaIdx-3].renderer.material.color = Color.yellow;
 								}
 							}
-
+							
 							pPlayer.TargetPoint = new Vector3(obj.transform.position.x,
 							                                         obj.transform.position.y + obj.renderer.bounds.size.y*0.5f,
 							                                         obj.transform.position.z);

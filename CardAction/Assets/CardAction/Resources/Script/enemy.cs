@@ -25,6 +25,7 @@ public class enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/*
 		Debug.Log ("enemyHP"+nHp);
 		if ((this.transform.position.x >= TargetPoint.x + 0.1f || this.transform.position.x <= TargetPoint.x - 0.1f) || 
 		    (this.transform.position.z >= TargetPoint.z + 0.1f || this.transform.position.z <= TargetPoint.z - 0.1f)) {
@@ -39,5 +40,6 @@ public class enemy : MonoBehaviour {
 		} else if( animator.GetInteger("State") != 0 ){
 			animator.SetInteger ("State", 0);
 		}
+		*/
 	}
 }

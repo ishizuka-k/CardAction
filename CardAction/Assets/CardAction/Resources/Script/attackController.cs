@@ -44,17 +44,18 @@ public class attckContoller {
 									break;
 								case 1:
 									pPlayer.rigor = CD.rigor;
-					longSordRange(CD);
+									longSordRange(CD);
 									break;
 								case 2:
 									pPlayer.rigor = CD.rigor;
-					wideSordRange(CD);
+									wideSordRange(CD);
 									break;
 								}
 								break;
 						case CardData.TYPE.BULLET:
 								switch (CD.id) {
 								case 0:
+										BulletAttack(CD);
 										break;
 								}
 								break;
@@ -67,6 +68,19 @@ public class attckContoller {
 						}
 				}
 		}
+
+	private bool BulletAttack ( CardData CD ) {
+		pPlayer.rigor = CD.rigor;
+		pPlayer.animator.SetInteger("State", 4);
+
+		GameObject Area = GameObject.Find("Area" + pPlayer.AreaIdx);
+		//エフェクト
+		Vector3 pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
+		effectManager EM = GameManager.Instance.getEffectInstance();
+		EM.provisionEffect(pos,CD.effect,CD.rigor);
+
+		return true;
+	}
 	
 	public bool sordRange (CardData CD) {
 		pPlayer.animator.SetInteger("State", 4);
