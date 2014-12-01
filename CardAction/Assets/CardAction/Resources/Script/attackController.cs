@@ -57,6 +57,9 @@ public class attckContoller {
 								case 0:
 										BulletAttack(CD);
 										break;
+				case 1:
+					BomAttack(CD);
+					break;
 								}
 								break;
 						case CardData.TYPE.ITEM:
@@ -79,6 +82,19 @@ public class attckContoller {
 		effectManager EM = GameManager.Instance.getEffectInstance();
 		EM.provisionEffect(pos,CD.effect,CD.rigor);
 
+		return true;
+	}
+
+	private bool BomAttack ( CardData CD ) {
+		pPlayer.rigor = CD.rigor;
+		pPlayer.animator.SetInteger("State", 4);
+		
+		GameObject Area = GameObject.Find("Area" + pPlayer.AreaIdx);
+		//エフェクト
+		Vector3 pos = new Vector3(Area.transform.position.x,Area.transform.position.y+1.0f,Area.transform.position.z);
+		effectManager EM = GameManager.Instance.getEffectInstance();
+		EM.provisionEffect(pos,CD.effect,CD.rigor);
+		
 		return true;
 	}
 	
