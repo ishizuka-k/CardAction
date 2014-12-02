@@ -175,7 +175,7 @@ public class attckContoller {
 		if ( nRange == pEnemy.AreaIdx ) {
 			pEnemy.nHp -= 1;
 			if ( pEnemy.nHp <= 0 ) {
-				Object.Destroy(obj);
+				pEnemy.DeleteEnemy();
 			}
 			return true;
 		}

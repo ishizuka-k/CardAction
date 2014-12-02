@@ -54,4 +54,9 @@ public class enemy : MonoBehaviour {
 		}
 		*/
 	}
+
+	public void DeleteEnemy(){
+		Destroy(gaugeObj);
+		Destroy(this.gameObject);
+	}
 }

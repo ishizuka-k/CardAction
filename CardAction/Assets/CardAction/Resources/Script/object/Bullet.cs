@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour {
 					Destroy (this.gameObject);
 					Object.Instantiate((GameObject)Resources.Load<GameObject>("prefab/exploPrefab"),this.transform.position , Quaternion.identity);
 					if ( pEnemy.nHp <= 0 ) {
-						Object.Destroy(obj);
+						pEnemy.DeleteEnemy();
 					}
 					break;
 				}

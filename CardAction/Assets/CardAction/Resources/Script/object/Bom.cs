@@ -68,7 +68,7 @@ public class Bom : MonoBehaviour {
 				if ( NextAreaIdx == pEnemy.AreaIdx ) {
 					pEnemy.nHp -= nAtk;
 					if ( pEnemy.nHp <= 0 ) {
-						Object.Destroy(obj);
+						pEnemy.DeleteEnemy();
 					}
 					break;
 				}

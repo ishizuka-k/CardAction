@@ -7,11 +7,14 @@ public class guicontroll : MonoBehaviour {
 	attckContoller AC;
     int touchNumber;
 	Vector3 TouchPoint;
+	Player pPlayer;
 	public bool swap;
 	
 
 	// Use this for initialization
 	void Start () {
+		GameObject obj = GameObject.Find("Player");
+		pPlayer = obj.GetComponent<Player>();
 		touchNumber = -1;
 		TouchPoint = new Vector3 (0,0,0);
 		swap = false;
@@ -31,6 +34,7 @@ public class guicontroll : MonoBehaviour {
 			if ( swap == false && touchNumber != -1) {
 				AC = attckContoller.Instance;
 				AC.AttckJudge(touchNumber);
+				pPlayer.nowCard[touchNumber] = 0;
 			}
             touchNumber = -1;
 			swap = false;
@@ -38,8 +42,10 @@ public class guicontroll : MonoBehaviour {
         for (int i = 0; i < 5; i++ )
         {
 			Rect testRect = new Rect(i * Screen.width / 5.0f, Screen.height - Screen.height / 10.0f, Screen.width / 5.0f, Screen.height / 10.0f);
-            //Rect testRect = new Rect(0, 0, 100, 100);
+			Rect gaugeRect = new Rect(i * Screen.width / 5.0f, testRect.y-Screen.height / 50.0f, Screen.width / 5.0f, Screen.height / 50.0f);
+
             rectifyRectScale(ref testRect);
+			rectifyRectScale(ref gaugeRect);
             
             if (Input.GetMouseButtonDown(0))
             {
@@ -47,8 +53,11 @@ public class guicontroll : MonoBehaviour {
                 {
                     if (testRect.y < (Screen.height - Input.mousePosition.y) && (Screen.height - Input.mousePosition.y) < testRect.y + testRect.height)
                     {
-						TouchPoint = Input.mousePosition;
-                        touchNumber = i;
+						if (pPlayer.nowCard [i] >= GM.GetCard (i).wait)
+						{
+							TouchPoint = Input.mousePosition;
+                     	 	touchNumber = i;
+						}
                     }
                 }
             }
@@ -67,7 +76,9 @@ public class guicontroll : MonoBehaviour {
 					swap = true;
 				}
             }
+			gaugeRect.width = pPlayer.nowCard[i]/GM.GetCard(i).wait*Screen.width / 5.0f;
 			GUI.DrawTexture(testRect, (Texture)GM.GetCard(i).tex);
+			GUI.DrawTexture(gaugeRect, (Texture)Resources.Load<Texture>("image/mask"));
         }
 	}
 
