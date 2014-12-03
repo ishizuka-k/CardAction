@@ -55,8 +55,11 @@ public class guicontroll : MonoBehaviour {
                     {
 						if (pPlayer.nowCard [i] >= GM.GetCard (i).wait)
 						{
-							TouchPoint = Input.mousePosition;
-                     	 	touchNumber = i;
+							if (pPlayer.rigor <= 0)
+							{
+								TouchPoint = Input.mousePosition;
+                     	 		touchNumber = i;
+							}
 						}
                     }
                 }
