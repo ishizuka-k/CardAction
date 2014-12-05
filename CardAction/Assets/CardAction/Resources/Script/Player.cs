@@ -3,6 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour {
+	public const float SPEED = 0.1f;
     public Animator animator;
 	public int 		AreaIdx;
 	public float 	rigor;
@@ -44,9 +45,9 @@ public class Player : MonoBehaviour {
 		GameManager.Instance.getEffectInstance().Update();
 		if ((this.transform.position.x >= TargetPoint.x + 0.1f || this.transform.position.x <= TargetPoint.x - 0.1f) || 
 						(this.transform.position.z >= TargetPoint.z + 0.1f || this.transform.position.z <= TargetPoint.z - 0.1f)) {
-						this.transform.position = new Vector3 (this.transform.position.x + ((TargetPoint.x - StartPoint.x) * 0.1f),
-		                                       this.transform.position.y + ((TargetPoint.y - StartPoint.y) * 0.1f),
-		                                       this.transform.position.z + ((TargetPoint.z - StartPoint.z) * 0.1f));
+			this.transform.position = new Vector3 (this.transform.position.x + ((TargetPoint.x - StartPoint.x) * SPEED),
+			                                       this.transform.position.y + ((TargetPoint.y - StartPoint.y) * SPEED),
+			                                       this.transform.position.z + ((TargetPoint.z - StartPoint.z) * SPEED));
 
 						StartPoint = this.transform.position;
 
